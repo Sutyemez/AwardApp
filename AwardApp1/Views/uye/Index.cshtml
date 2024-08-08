@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model List<uye>
+@if (TempData["status"] != null)
+{
+    <div> @TempData["status"]</div>
+}
+
+<h1>Kullanıcılar</h1>
+<a asp-controller="uye" asp-action="Add">Kıllanıcı Ekle</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>İsim</th>
+            <th>Soyisim</th>
+            <th>Email</th>
+            <th>Şifre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Email</td>
+                <td>@item.Password</td>
+                <td><a asp-controller="uye" asp-action="remove" asp-route-id="@item.Id">Sil</a></td>
+                <td><a asp-controller="uye" asp-action="update" asp-route-id="@item.Id">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+<!-- Giriş yapan kullanıcının bilgileri -->
+@if (ViewData["LoggedInUser"] != null)
+{
+    var loggedInUser = ViewData["LoggedInUser"] as AwardApp1.Models.uye;
+    <div class="alert alert-info">
+        <h3>Kullanıcı Bilgileri</h3>
+        <p><strong>Ad:</strong> @loggedInUser.Name</p>
+        <p><strong>Soyad:</strong> @loggedInUser.Surname</p>
+        <p><strong>Email:</strong> @loggedInUser.Email</p>
+        <p><strong>Son Şifre 1:</strong> @loggedInUser.LastPass1</p>
+        <p><strong>Son Şifre 2:</strong> @loggedInUser.LastPass2</p>
+    </div>
+}

@@ -1,0 +1,29 @@
+﻿@model AwardApp1.Models.uye
+
+@{
+    ViewData["Title"] = "Giriş Yap";
+    var returnUrl = ViewData["ReturnUrl"] as string;
+}
+
+<h2>Giriş Yap</h2>
+
+<form asp-controller="Login" asp-action="Index1" method="post" class="container mt-5">
+    <!-- Gizli input ile ReturnUrl'yi gönderin -->
+    <input type="hidden" name="returnUrl" value="@returnUrl" />
+
+    <div class="form-group mb-3">
+        <label for="Email" class="form-label">E-mail</label>
+        <input asp-for="Email" class="form-control" id="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="Password" class="form-label">Şifre</label>
+        <input asp-for="Password" type="password" class="form-control" id="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+</form>
+
+

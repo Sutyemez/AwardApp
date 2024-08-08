@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Add";
+}
+
+@model uye
+
+<h1>Ürün ekleme</h1>
+<form asp-controller="uye" asp-action="SavePro" method="post">
+    <label>İsmi :</label>
+    <input type="text" asp-for="Name" />
+    <br />
+    <label>Soyisim</label>
+    <input type="text" asp-for="Surname" />
+    <br />
+    <label>Email</label>
+    <input type="text" asp-for="Email" />
+    <br />
+    <label>Şifre</label>
+    <input type="text" asp-for="Password" />
+    <br />
+    <button type="submit">Ürün Kaydet</button>
+</form>
